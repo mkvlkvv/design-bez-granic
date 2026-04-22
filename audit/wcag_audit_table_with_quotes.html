@@ -1,0 +1,349 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary);font-size:13px}
+.wrap{padding:1rem 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.filter-btn{font-size:12px;padding:4px 12px;border-radius:20px;border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer}
+.filter-btn.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:8px 10px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);position:sticky;top:0}
+td{padding:8px 10px;vertical-align:top;border-bottom:.5px solid var(--color-border-tertiary);line-height:1.5}
+tr:hover td{background:var(--color-background-secondary)}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:10px;white-space:nowrap}
+.badge.cr{background:#fcebeb;color:#a32d2d}
+.badge.wa{background:#faeeda;color:#854f0b}
+.badge.in{background:#eaf3de;color:#3b6d11}
+.badge.ok{background:#e6f1fb;color:#185fa5}
+.criterion{font-weight:500;margin-bottom:2px;font-size:12px}
+.desc{color:var(--color-text-secondary);font-size:11px;margin-top:2px}
+.quote{font-size:11px;color:var(--color-text-secondary);line-height:1.5;border-left:2px solid var(--color-border-secondary);padding-left:8px;margin-top:2px;font-style:italic}
+.source{font-size:10px;color:var(--color-text-tertiary);margin-top:3px;font-style:normal}
+.tag{font-size:10px;padding:1px 6px;border-radius:10px;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.hidden{display:none}
+.scroll{overflow-x:auto;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg)}
+</style>
+<div class="wrap">
+<h2 class="sr-only">Таблица нарушений доступности с цитатами из WCAG и Постановления №102</h2>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterTable('all')">Все (19)</button>
+  <button class="filter-btn" onclick="filterTable('cr')">Критичные (9)</button>
+  <button class="filter-btn" onclick="filterTable('wa')">Важные (6)</button>
+  <button class="filter-btn" onclick="filterTable('in')">Советы (4)</button>
+</div>
+
+<div class="scroll">
+<table id="tbl">
+<thead>
+<tr>
+  <th style="width:70px">Уровень</th>
+  <th style="width:90px">Критерий</th>
+  <th style="width:170px">Нарушение</th>
+  <th>Цитата из WCAG / ПП №102</th>
+  <th style="width:55px">Норматив</th>
+</tr>
+</thead>
+<tbody>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 2.4.1</span></td>
+  <td>
+    <div class="criterion">Нет skip-link «Перейти к содержимому»</div>
+    <div class="desc">Пользователи клавиатуры и скринридера обходят весь шапочный блок при каждой загрузке страницы. На сайте &gt;10 ссылок в шапке до основного контента.</div>
+  </td>
+  <td>
+    <div class="quote">«A mechanism is available to bypass blocks of content that are repeated on multiple web pages.»</div>
+    <div class="source">WCAG 2.1 SC 2.4.1 Bypass Blocks (Level A)</div>
+    <div class="quote" style="margin-top:6px">«информация, размещаемая на официальных сайтах, беспрепятственно доступна при помощи клавиатуры, ограничения по времени нажатия клавиш которой отсутствуют»</div>
+    <div class="source">ПП РФ №102, п.2 (а)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 1.3.1</span></td>
+  <td>
+    <div class="criterion">Карточки маршрутов без заголовков</div>
+    <div class="desc">20+ элементов &lt;article&gt; не содержат h2–h6. Навигация по заголовкам — основная техника незрячих.</div>
+  </td>
+  <td>
+    <div class="quote">«Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.»</div>
+    <div class="source">WCAG 2.1 SC 1.3.1 Info and Relationships (Level A)</div>
+    <div class="quote" style="margin-top:6px">«информация, структура и смысловые связи могут быть определены программой для ЭВМ или доступны в текстовом формате»</div>
+    <div class="source">ПП РФ №102, п.2 (а)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 4.1.2</span></td>
+  <td>
+    <div class="criterion">Кнопки фильтров без aria-pressed</div>
+    <div class="desc">11 toggle-кнопок («Зима», «С детьми» и др.) не сообщают скринридеру о своём состоянии.</div>
+  </td>
+  <td>
+    <div class="quote">«For all user interface components, the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically determined; and notification of changes to these items is available to user agents, including assistive technologies.»</div>
+    <div class="source">WCAG 2.1 SC 4.1.2 Name, Role, Value (Level A)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 4.1.2</span></td>
+  <td>
+    <div class="criterion">5 пустых кнопок без метки</div>
+    <div class="desc">Кнопки поиска и навигации: пустой текст, нет aria-label. Скринридер объявляет «кнопка» без функции.</div>
+  </td>
+  <td>
+    <div class="quote">«For all user interface components… the name and role can be programmatically determined»</div>
+    <div class="source">WCAG 2.1 SC 4.1.2 Name, Role, Value (Level A)</div>
+    <div class="quote" style="margin-top:6px">«если нетекстовый контент является элементом управления… то он должен иметь название, описывающее его назначение»</div>
+    <div class="source">ПП РФ №102, п.2 (г)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 1.1.1</span></td>
+  <td>
+    <div class="criterion">Декоративные иконки с именами файлов в alt</div>
+    <div class="desc">alt="Icon_1.original.svg" на каждой из 60+ иконок. Засоряет поток скринридера.</div>
+  </td>
+  <td>
+    <div class="quote">«If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technology.»</div>
+    <div class="source">WCAG 2.1 SC 1.1.1 Non-text Content (Level A)</div>
+    <div class="quote" style="margin-top:6px">«если нетекстовый контент используется исключительно с целью оформления… то он должен быть представлен таким образом, чтобы вспомогательные технологии могли его игнорировать»</div>
+    <div class="source">ПП РФ №102, п.2 (г)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 2.4.4</span></td>
+  <td>
+    <div class="criterion">Ссылки на соцсети без описания</div>
+    <div class="desc">ВКонтакте, Одноклассники, MAX — нет aria-label. Скринридер читает alt изображений («ok», «Round_Icon=White 1») как текст ссылки.</div>
+  </td>
+  <td>
+    <div class="quote">«The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context»</div>
+    <div class="source">WCAG 2.1 SC 2.4.4 Link Purpose (Level A)</div>
+    <div class="quote" style="margin-top:6px">«цель каждой ссылки, размещаемой на официальных сайтах, определяется из текста ссылки или из текста ссылки вместе с ее контекстом»</div>
+    <div class="source">ПП РФ №102, п.2 (ж)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 1.4.4</span></td>
+  <td>
+    <div class="criterion">Масштабирование страницы заблокировано</div>
+    <div class="desc">user-scalable=no, maximum-scale=1.0. Пользователи с нарушениями зрения не могут увеличить текст.</div>
+  </td>
+  <td>
+    <div class="quote">«Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.»</div>
+    <div class="source">WCAG 2.1 SC 1.4.4 Resize Text (Level AA)</div>
+    <div class="quote" style="margin-top:6px">«текстовая информация… масштабируется не менее чем на 200 процентов исходного масштаба интернет-страницы без применения вспомогательных технологий, потери функциональности»</div>
+    <div class="source">ПП РФ №102, п.2 (б)</div>
+  </td>
+  <td><span class="tag">AA</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 2.4.2</span></td>
+  <td>
+    <div class="criterion">Заголовок страницы — слоган, а не описание</div>
+    <div class="desc">Title: «Путешествия — лучший способ быть вместе». Не описывает страницу автомаршрутов.</div>
+  </td>
+  <td>
+    <div class="quote">«Web pages have titles that describe topic or purpose.»</div>
+    <div class="source">WCAG 2.1 SC 2.4.2 Page Titled (Level A)</div>
+    <div class="quote" style="margin-top:6px">«заголовки страниц официальных сайтов описывают их тему или цель»</div>
+    <div class="source">ПП РФ №102, п.2 (е)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="cr">
+  <td><span class="badge cr">Критично</span></td>
+  <td><span class="tag">WCAG 1.3.6</span></td>
+  <td>
+    <div class="criterion">Нет навигационных ориентиров &lt;nav&gt;</div>
+    <div class="desc">0 элементов &lt;nav&gt; на странице. Пользователь скринридера не может перейти к меню или пагинации через список landmarks.</div>
+  </td>
+  <td>
+    <div class="quote">«Provide ways to help users navigate, find content, and determine where they are.»</div>
+    <div class="source">WCAG 2.1 Guideline 2.4 Navigable</div>
+    <div class="quote" style="margin-top:6px">«информация должна быть структурирована таким образом, чтобы порядок ее представления, определяемый программным обеспечением, соответствовал смысловой логике контента»</div>
+    <div class="source">ПП РФ №102, п.2 (а)</div>
+  </td>
+  <td><span class="tag">AA</span></td>
+</tr>
+
+<tr data-sev="wa">
+  <td><span class="badge wa">Важно</span></td>
+  <td><span class="tag">WCAG 2.4.3</span></td>
+  <td>
+    <div class="criterion">Текущая страница пагинации вне фокуса</div>
+    <div class="desc">«Previous» и «1» имеют tabindex="-1". Активная страница исключена из порядка обхода.</div>
+  </td>
+  <td>
+    <div class="quote">«If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operation.»</div>
+    <div class="source">WCAG 2.1 SC 2.4.3 Focus Order (Level A)</div>
+    <div class="quote" style="margin-top:6px">«если осуществляется последовательное ориентирование по контенту… указатель перемещается по компонентам контента в порядке, сохраняющем значение и возможность управления»</div>
+    <div class="source">ПП РФ №102, п.2 (а)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="wa">
+  <td><span class="badge wa">Важно</span></td>
+  <td><span class="tag">WCAG 1.3.1</span></td>
+  <td>
+    <div class="criterion">Теги маршрута без семантики</div>
+    <div class="desc">Теги «С детьми», «Зима» и др. визуально кликабельны, но без role, list/listitem структуры.</div>
+  </td>
+  <td>
+    <div class="quote">«Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.»</div>
+    <div class="source">WCAG 2.1 SC 1.3.1 Info and Relationships (Level A)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="wa">
+  <td><span class="badge wa">Важно</span></td>
+  <td><span class="tag">WCAG 4.1.2</span></td>
+  <td>
+    <div class="criterion">Дропдауны фильтров без aria-expanded</div>
+    <div class="desc">«Все направления», «Все регионы» — кнопки открывают выпадающий список, но не сообщают об этом через aria-expanded.</div>
+  </td>
+  <td>
+    <div class="quote">«states, properties, and values that can be set by the user can be programmatically determined»</div>
+    <div class="source">WCAG 2.1 SC 4.1.2 Name, Role, Value (Level A)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="wa">
+  <td><span class="badge wa">Важно</span></td>
+  <td><span class="tag">WCAG 2.4.7</span></td>
+  <td>
+    <div class="criterion">Видимость фокуса требует проверки</div>
+    <div class="desc">CSS содержит :focus правила, но на кнопках фильтров и карточках возможен outline:none.</div>
+  </td>
+  <td>
+    <div class="quote">«Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.»</div>
+    <div class="source">WCAG 2.1 SC 2.4.7 Focus Visible (Level AA)</div>
+  </td>
+  <td><span class="tag">AA</span></td>
+</tr>
+
+<tr data-sev="wa">
+  <td><span class="badge wa">Важно</span></td>
+  <td><span class="tag">WCAG 1.4.3</span></td>
+  <td>
+    <div class="criterion">Контрастность — требует ручной проверки</div>
+    <div class="desc">Теги на фоне фотографий, подписи иконок — необходима инструментальная проверка соотношения 4.5:1.</div>
+  </td>
+  <td>
+    <div class="quote">«The visual presentation of text and images of text has a contrast ratio of at least 4.5:1»</div>
+    <div class="source">WCAG 2.1 SC 1.4.3 Contrast Minimum (Level AA)</div>
+    <div class="quote" style="margin-top:6px">«визуальное отображение текстовой информации… имеют коэффициент контрастности не менее 4,5:1»</div>
+    <div class="source">ПП РФ №102, п.2 (з)</div>
+  </td>
+  <td><span class="tag">AA</span></td>
+</tr>
+
+<tr data-sev="wa">
+  <td><span class="badge wa">Важно</span></td>
+  <td><span class="tag">WCAG 1.3.3</span></td>
+  <td>
+    <div class="criterion">Параметры маршрута без контекстных меток</div>
+    <div class="desc">«660 км», «3 дня», «GMT+3» рядом с декоративными иконками. Скринридер читает числа без контекста.</div>
+  </td>
+  <td>
+    <div class="quote">«Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound.»</div>
+    <div class="source">WCAG 2.1 SC 1.3.3 Sensory Characteristics (Level A)</div>
+    <div class="quote" style="margin-top:6px">«интерфейс… использует не только визуальные характеристики элемента (цвет, форму, размер, визуальное местоположение), но и текст, доступный для чтения с помощью вспомогательных технологий»</div>
+    <div class="source">ПП РФ №102, п.2 (и)</div>
+  </td>
+  <td><span class="tag">A</span></td>
+</tr>
+
+<tr data-sev="in">
+  <td><span class="badge ok">Совет</span></td>
+  <td><span class="tag">WCAG 2.4.8</span></td>
+  <td>
+    <div class="criterion">Нет breadcrumb-навигации</div>
+    <div class="desc">Листинговая страница не содержит хлебных крошек. Затрудняет ориентацию в структуре сайта.</div>
+  </td>
+  <td>
+    <div class="quote">«Information about the user's location within a set of Web pages is available.»</div>
+    <div class="source">WCAG 2.1 SC 2.4.8 Location (Level AAA)</div>
+  </td>
+  <td><span class="tag">AAA</span></td>
+</tr>
+
+<tr data-sev="in">
+  <td><span class="badge ok">Совет</span></td>
+  <td><span class="tag">WCAG 2.5.8</span></td>
+  <td>
+    <div class="criterion">Размер области касания кнопок</div>
+    <div class="desc">WCAG 2.2 требует минимум 24×24 px. Теги-фильтры на мобиле могут быть меньше рекомендованных 44×44 px.</div>
+  </td>
+  <td>
+    <div class="quote">«The size of the target for pointer inputs is at least 24 by 24 CSS pixels»</div>
+    <div class="source">WCAG 2.2 SC 2.5.8 Target Size Minimum (Level AA)</div>
+  </td>
+  <td><span class="tag">AA 2.2</span></td>
+</tr>
+
+<tr data-sev="in">
+  <td><span class="badge ok">Совет</span></td>
+  <td><span class="tag">WCAG 2.4.5</span></td>
+  <td>
+    <div class="criterion">Пагинация не обёрнута в &lt;nav&gt;</div>
+    <div class="desc">Блок пагинации — важный элемент навигации — не имеет семантического контейнера с меткой.</div>
+  </td>
+  <td>
+    <div class="quote">«More than one way is available to locate a Web page within a set of Web pages except where the Web page is the result of, or a step in, a process.»</div>
+    <div class="source">WCAG 2.1 SC 2.4.5 Multiple Ways (Level AA)</div>
+  </td>
+  <td><span class="tag">AA</span></td>
+</tr>
+
+<tr data-sev="in">
+  <td><span class="badge ok">Совет</span></td>
+  <td><span class="tag">WCAG 3.1.2</span></td>
+  <td>
+    <div class="criterion">Иностранные слова без lang-атрибута</div>
+    <div class="desc">«Стрит-арт», «MAX» — при наличии иноязычных слов скринридеры меняют произношение только при lang="en".</div>
+  </td>
+  <td>
+    <div class="quote">«The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language»</div>
+    <div class="source">WCAG 2.1 SC 3.1.2 Language of Parts (Level AA)</div>
+  </td>
+  <td><span class="tag">AA</span></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+<script>
+function filterTable(sev){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('#tbl tbody tr').forEach(r=>{
+    r.classList.toggle('hidden', sev!=='all' && r.dataset.sev!==sev);
+  });
+}
+</script>
