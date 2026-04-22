@@ -1,0 +1,6 @@
+[submodule "simple-russian-language"]
+	path = simple-russian-language
+	url = https://github.com/Elur12/simple_russian_language.git
+[submodule "layout-for-screenreader"]
+	path = layout-for-screenreader
+	url = https://github.com/mkvlkvv/hackaton.git
