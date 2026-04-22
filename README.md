@@ -16,7 +16,7 @@
 - Дизайн фигмы адаптированный под простой русский язык и контрастность - [figma.com](https://www.figma.com/design/tvfdToYEJFslu3senoa8PI/%D0%9F%D1%83%D1%82%D0%B5%D1%88%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D0%BC.%D1%80%D1%84?node-id=0-1&t=yw1OgK6pt5gLJAeg-1)
 
 ## Дополнительные материалы 
-- Аудит разных старниц сайта - [disk.yandex.ru](./audit/)
+- Аудит разных старниц сайта - [Папка аудита](./audit/)
 - GitHub программы для контент мейкеров для проверки на простой язык - [Папка simple-russian-language](https://github.com/Elur12/simple_russian_language)
 - Развёрнутая программа для проверки на простой язык - [Simple Russian Language](http://77.110.119.196:5173)
 
